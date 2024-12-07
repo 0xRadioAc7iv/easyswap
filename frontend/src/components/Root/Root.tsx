@@ -19,6 +19,7 @@ import { init } from "@/core/init";
 
 import "./styles.css";
 import { AnonAadhaarProvider } from "@anon-aadhaar/react";
+import { Providers } from "../Providers";
 
 function RootInner({ children }: PropsWithChildren) {
   const isDev = process.env.NODE_ENV === "development";
@@ -47,12 +48,14 @@ function RootInner({ children }: PropsWithChildren) {
 
   return (
     <AnonAadhaarProvider _appName="ETHIndia 2024">
-      <AppRoot
-        appearance={isDark ? "dark" : "light"}
-        platform={["macos", "ios"].includes(lp.platform) ? "ios" : "base"}
-      >
-        {children}
-      </AppRoot>
+      <Providers>
+        <AppRoot
+          appearance={isDark ? "dark" : "light"}
+          platform={["macos", "ios"].includes(lp.platform) ? "ios" : "base"}
+        >
+          {children}
+        </AppRoot>
+      </Providers>
     </AnonAadhaarProvider>
   );
 }
