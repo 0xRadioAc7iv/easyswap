@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from "react";
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { getLocale } from "next-intl/server";
 
 import { Root } from "@/components/Root/Root";
@@ -18,7 +19,12 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 
   return (
     <html lang={locale}>
-      <body>
+      <body
+        style={{
+          background: "linear-gradient(to bottom, #1E3A8A 20%, #020304 80%)", 
+          minHeight: "100vh",
+          margin: 0,
+        }}>
         <I18nProvider>
           <Root>{children}</Root>
         </I18nProvider>
