@@ -20,28 +20,41 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#19191F] to-[#2D2D35] text-white p-4">
-      <h1 className="text-4xl font-bold mb-8 text-center">Welcome to AI Agent</h1>
-      
-      <div className="relative w-64 h-64 mb-8">
-        <Image
-          src="/images/robot.png"
-          alt="AI Agent Robot"
-          layout="fill"
-          objectFit="contain"
-          priority
-        />
-      </div>
-      
-      <p className="text-lg text-center mb-8 max-w-md">
-        Your intelligent assistant for managing investments and financial decisions.
-      </p>
-      
-      <div className="flex gap-4">
-        <div className="mt-4">
-          <LogInWithAnonAadhaar nullifierSeed={1234} />
+      <div className="w-full max-w-4xl flex flex-col items-center">
+        <h1 className="text-4xl font-bold mb-8 text-center">Welcome to AI Agent</h1>
+        
+        <div className="flex flex-col items-center justify-center gap-8 w-full">
+          <div className="bg-[#E7B2DB]/10 rounded-lg p-4 backdrop-blur-sm">
+            <LogInWithAnonAadhaar nullifierSeed={1234} />
+          </div>
+
+          <div className="relative w-64 h-64">
+            <Image
+              src="/images/robot.png"
+              alt="AI Agent Robot"
+              layout="fill"
+              objectFit="contain"
+              priority
+              className="drop-shadow-[0_0_15px_rgba(231,178,219,0.3)]"
+            />
+          </div>
+
+          <div className="bg-[#E7B2DB]/10 rounded-lg p-4 backdrop-blur-sm">
+            <WalletDefault />
+          </div>
         </div>
-      <div><WalletDefault /></div>
+        
+        <p className="text-lg text-center mt-8 mb-4 max-w-md">
+          Your intelligent assistant for managing investments and financial decisions.
+        </p>
+        
+        {isUserVerified && (
+          <p className="text-[#E7B2DB] font-semibold">
+            User verified successfully!
+          </p>
+        )}
       </div>
     </div>
   )
 }
+
